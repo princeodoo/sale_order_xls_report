@@ -15,7 +15,7 @@
         'wizard/sale_order_xls_view.xml'
     ],
     'demo': [],  
-    'images': ['static/description/banner.jpg'],
+    'images': ['static/description/banner.png'],
     'auto_install': False,
     'installable': True,
     'application': True
