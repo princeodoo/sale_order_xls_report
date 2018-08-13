@@ -39,7 +39,6 @@ class SaleOrderReport(models.TransientModel):
         if sale_order:
             for rec in sale_order:
                 order_lines = []
-                taxes = []
                 for lines in rec.order_line:
                     product = {
                         'product_id'     : lines.product_id.name,
@@ -51,6 +50,7 @@ class SaleOrderReport(models.TransientModel):
                         'price_subtotal' : lines.price_subtotal   
                     }
                     if lines.tax_id:
+                        taxes = []
                         for tax_id in lines.tax_id:
                             taxes.append(tax_id.name)
                         product['tax_id'] = taxes
