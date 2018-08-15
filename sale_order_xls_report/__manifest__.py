@@ -9,7 +9,7 @@
     'author': 'Prince',
     'license': "OPL-1",
     'depends': [
-        'sale_management'
+        'sale'
     ],
     'data': [
         'wizard/sale_order_xls_view.xml'
