@@ -55,5 +55,5 @@
         </record>
 
          <menuitem name="Sale Excel Report" id="sale_excel_report_child_menu"
-              parent="sale.menu_sale_report" sequence="3" action="action_view_sale_order_xls"/>
+              parent="base.menu_sale_report" sequence="3" action="action_view_sale_order_xls"/>
 </odoo>

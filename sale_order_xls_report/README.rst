@@ -1,5 +1,5 @@
 =================================
-Sale Order Excel Report V11
+Sale Order Excel Report V9
 =================================
 
 This module provides following features:

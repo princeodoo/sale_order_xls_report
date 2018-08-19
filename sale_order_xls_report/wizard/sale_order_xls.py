@@ -3,8 +3,8 @@ import xlwt
 import base64
 import calendar
 from io import StringIO
-from odoo import models, fields, api, _
-from odoo.exceptions import UserError, ValidationError, Warning
+from openerp import models, fields, api, _
+from openerp.exceptions import UserError, ValidationError, Warning
 from datetime import datetime
 
 class SaleOrderReport(models.TransientModel):
@@ -124,26 +124,26 @@ class SaleOrderReport(models.TransientModel):
                     else:
                         sheet.write(row, 6, 0, format4)
                     if final_value['currency_id'].position == "before":
-                        sheet.write(row, 7, str(final_value['currency_id'].symbol) + str(rec.get('price_subtotal')), format4)
+                        sheet.write(row, 7, final_value['currency_id'].symbol + str(rec.get('price_subtotal')), format4)
                     else:
-                        sheet.write(row, 7, str(rec.get('price_subtotal')) + str(final_value['currency_id'].symbol), format4)
+                        sheet.write(row, 7, str(rec.get('price_subtotal')) + final_value['currency_id'].symbol, format4)
                     row += 1
                 row += 2
                 sheet.write(row, 6, 'UNTAXED AMOUNT', format8)
                 if final_value['currency_id'].position == "before":
-                    sheet.write(row, 7,  str(final_value['currency_id'].symbol) + str(final_value['amount_untaxed']), format7)
+                    sheet.write(row, 7, final_value['currency_id'].symbol + str(final_value['amount_untaxed']), format7)
                 else:
-                    sheet.write(row, 7, str(final_value['amount_untaxed']) + str(final_value['currency_id'].symbol), format7)    
+                    sheet.write(row, 7, str(final_value['amount_untaxed']) + final_value['currency_id'].symbol, format7)    
                 sheet.write(row+1, 6, 'TAXES', format8)
                 if final_value['currency_id'].position == "before":
-                    sheet.write(row+1, 7,  str(final_value['currency_id'].symbol) + str(final_value['amount_tax']), format7)
+                    sheet.write(row+1, 7, final_value['currency_id'].symbol + str(final_value['amount_tax']), format7)
                 else:
-                    sheet.write(row+1, 7, str(final_value['amount_tax']) + str(final_value['currency_id'].symbol), format7)
+                    sheet.write(row+1, 7, str(final_value['amount_tax']) + final_value['currency_id'].symbol, format7)
                 sheet.write(row+2, 6, 'TOTAL', format8)
                 if final_value['currency_id'].position == "before":
-                    sheet.write(row+2, 7,  str(final_value['currency_id'].symbol) + str(final_value['amount_total']), format7)
+                    sheet.write(row+2, 7, final_value['currency_id'].symbol + str(final_value['amount_total']), format7)
                 else:
-                    sheet.write(row+2, 7, str(final_value['amount_total']) + str(final_value['currency_id'].symbol), format7)
+                    sheet.write(row+2, 7, str(final_value['amount_total']) + final_value['currency_id'].symbol, format7)
         else:
             raise Warning("Currently No Sales Order For This Data!!")
         filename = ('Sale Order Report'+ '.xls')
