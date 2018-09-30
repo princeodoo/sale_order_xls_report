@@ -6,7 +6,7 @@
     'summary': '''
         Prints Excel Report based on sale order status,salesperson.
         ''',
-    'author': 'Prince',
+    'author': 'HK',
     'depends': [
         'sale'
     ],
